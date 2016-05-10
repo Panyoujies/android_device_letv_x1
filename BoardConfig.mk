@@ -200,8 +200,10 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/letv/x1/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    debuggerd.te \
-    servicemanager.te
+    servicemanager.te \
+    file_contexts \
+    property_contexts \
+    debuggerd.te
 
 # Time services
 #BOARD_USES_QC_TIME_SERVICES := true

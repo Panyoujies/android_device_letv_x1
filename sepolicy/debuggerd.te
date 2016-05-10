@@ -1,1 +1,1 @@
-allow debuggerd init:procss ptrace
+allow debuggerd init:process ptrace;

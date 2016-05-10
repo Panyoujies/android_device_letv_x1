@@ -1,0 +1,6 @@
+
+/dev/tfa9890                                    u:object_r:audio_device:s0
+/dev/pn547                                      u:object_r:nfc_device:s0
+/sys/module/snd_soc_ess9018/parameters/product_id_flag              u:object_r:audio_device:s0
+/data/misc/location/mq/location-mq-s                                u:object_r:location_socket:s0
+
