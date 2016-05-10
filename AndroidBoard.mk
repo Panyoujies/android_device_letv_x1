@@ -72,5 +72,5 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/qca_cld; \
 $(shell mkdir -p $(TARGET_OUT)/lib64; \
         rm $(TARGET_OUT)/lib64/libwebviewchromium.so; \
         ln -sf /system/lib64/libwebviewchromium.so \
-        $(TARGET_OUT_APPS)/webview/lib/arm/libwebviewchromium.so)
+        $(TARGET_OUT_APPS)/webview/lib/arm64/libwebviewchromium.so)
 

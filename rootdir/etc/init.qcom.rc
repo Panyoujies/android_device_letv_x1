@@ -185,6 +185,24 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+    # permission for smartPA
+    chmod 0664 /dev/tfa9890
+    chown media media /dev/tfa9890
+
+    # audio get product id used
+    chown media media /sys/module/snd_soc_ess9018/parameters/product_id_flag
+
+    # permission for NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0660 /dev/pn547
+    chown nfc nfc /dev/pn547
+
+    chmod 0644 /dev/block/mmcblk0p36
+
+    #change permissions for /dev/ssr_monitor_dev
+    chown system system /proc/ssr_monitor_dev
+    chmod 0666 /proc/ssr_monitor_dev
+
     # Mark the copy complete flag to not completed
     write /data/misc/radio/copy_complete 0
     chown radio radio /data/misc/radio/copy_complete
@@ -198,9 +216,11 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    #Create folder for mm-qcamera-daemon
+    # We will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/misc/camera 0770 camera camera
+
+    # Create folder for mm-qcamera-daemon
+    mkdir /data/camera 0770 media camera
 
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -371,6 +391,10 @@ service ss_ramdump /system/bin/subsystem_ramdump
 
 on property:persist.sys.ssr.restart_level=*
     start ssr_setup
+
+on property:persist.sys.ssr.enable_ramdumps=2
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 2
+    start ss_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1

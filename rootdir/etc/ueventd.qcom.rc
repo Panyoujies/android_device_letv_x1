@@ -51,6 +51,11 @@
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
 
+/dev/block/mmcblk0p30     0660   system     system
+/dev/block/mmcblk0p28     0440   system     system
+# misc permissions for force upgrade
+/dev/block/mmcblk0p43     0660   system     system
+
 /dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
 /dev/ttyUSB0              0660   bluetooth  bluetooth
@@ -155,7 +160,7 @@
 /dev/msm_voicememo        0660   system     audio
 /dev/smd3                 0660   bluetooth  net_bt_stack
 /dev/smd2                 0660   bluetooth  net_bt_stack
-/dev/ttyHSL1              0660   system     system
+/dev/ttyHSL1              0666   system     system
 /dev/ttyHS1               0660   system     system
 /dev/mdm                  0660   system     radio
 /sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664 radio radio
