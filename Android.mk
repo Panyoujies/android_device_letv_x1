@@ -25,6 +25,12 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter x1,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),x1)
+
+include device/letv/x1/kernel/AndroidKernel.mk
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
+
 endif
