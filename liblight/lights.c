@@ -127,20 +127,19 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(__attribute__ ((unused)) struct light_device_t *dev,
+set_light_backlight(struct light_device_t *dev,
         const struct light_state_t *state)
 {
     int err = 0;
-    int brightness = rgb_to_brightness(state);
-
     if (!dev) {
         return -1;
     }
 
+    int brightness = rgb_to_brightness(state);
+	 int brightness2 = brightness * 16;
+
     pthread_mutex_lock(&g_lock);
-
-    err = write_int(LCD_FILE, brightness);
-
+    err = write_int(LCD_FILE, brightness2);
     pthread_mutex_unlock(&g_lock);
 
     return err;
